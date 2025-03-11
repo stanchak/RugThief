@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXAMPLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXAMPLE');
+</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>RugThief - Prices so good you think they're stolen!</title>
+    <meta name="description" content="RugThief offers the best deals on rugs anywhere. Our prices are so low they're almost criminal. Join our waitlist for exclusive first access to our store launch.">
+    <meta name="keywords" content="rugs, rug deals, persian rugs, affordable rugs, discount rugs, floor coverings, cheap rugs, rug store">
+    <meta name="author" content="RugThief.com">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://rugthief.com/">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg">
     <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
     <link rel="manifest" href="images/favicon/site.webmanifest">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rugthief.com/">
+    <meta property="og:title" content="RugThief - Prices so good you think they're stolen!">
+    <meta property="og:description" content="Get on the list for exclusive first access to the best rug deals anywhere. Our prices are so low they're almost criminal!">
+    <meta property="og:image" content="https://rugthief.com/images/logo-transparent.png">
+    <meta property="og:image:alt" content="RugThief Logo">
+    <meta property="og:site_name" content="RugThief">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://rugthief.com/">
+    <meta name="twitter:title" content="RugThief - Prices so good you think they're stolen!">
+    <meta name="twitter:description" content="Get on the list for exclusive first access to the best rug deals anywhere. Our prices are so low they're almost criminal!">
+    <meta name="twitter:image" content="https://rugthief.com/images/logo-transparent.png">
+    <meta name="twitter:image:alt" content="RugThief Logo">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
         
@@ -299,12 +329,12 @@
             
             <div class="email-form">
                 <h2>GET ON THE LIST</h2>
-                <form id="email-form">
+                <form id="email-form" aria-label="Email signup form">
                     <div class="form-container">
-                        <input type="email" placeholder="YOUR@EMAIL.COM" required>
-                        <button type="submit">STEAL MY SPOT</button>
+                        <input type="email" name="email" id="email" placeholder="YOUR@EMAIL.COM" required aria-label="Email address">
+                        <button type="submit" aria-label="Submit email">STEAL MY SPOT</button>
                     </div>
-                    <div id="submission-message"></div>
+                    <div id="submission-message" aria-live="polite"></div>
                 </form>
             </div>
             
@@ -319,10 +349,42 @@
             </footer>
         </div>
     </div>
+    <!-- JSON-LD for structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "RugThief",
+      "url": "https://rugthief.com/",
+      "description": "RugThief offers the best deals on rugs anywhere. Our prices are so low they're almost criminal.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://rugthief.com/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "RugThief",
+      "url": "https://rugthief.com/",
+      "logo": "https://rugthief.com/images/logo-transparent.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "info@rugthief.com"
+      }
+    }
+    </script>
     <script>
         document.getElementById('email-form').addEventListener('submit', function(event) {
             event.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
+            const email = document.getElementById('email').value;
             
             // Get form data to send to Google Sheet
             const formData = new FormData();
