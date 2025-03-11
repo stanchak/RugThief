@@ -48,7 +48,16 @@ To connect the email form to Google Sheets, follow these steps:
    const sheetName = 'Sheet1'; // Change this if your sheet has a different name
    const scriptProp = PropertiesService.getScriptProperties();
 
+   // Handle both GET and POST requests for flexible integration
+   function doGet(e) {
+     return handleRequest(e);
+   }
+
    function doPost(e) {
+     return handleRequest(e);
+   }
+
+   function handleRequest(e) {
      const lock = LockService.getScriptLock();
      lock.tryLock(10000);
      
@@ -68,15 +77,31 @@ To connect the email form to Google Sheets, follow these steps:
        
        sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow]);
        
-       return ContentService
-         .createTextOutput(JSON.stringify({ 'result': 'success' }))
-         .setMimeType(ContentService.MimeType.JSON);
+       // Check if JSONP callback is provided
+       if (e.parameter.callback) {
+         // Return JSONP response
+         return ContentService
+           .createTextOutput(e.parameter.callback + '(' + JSON.stringify({ 'result': 'success', 'row': nextRow }) + ')')
+           .setMimeType(ContentService.MimeType.JAVASCRIPT);
+       } else {
+         // Return regular JSON response
+         return ContentService
+           .createTextOutput(JSON.stringify({ 'result': 'success', 'row': nextRow }))
+           .setMimeType(ContentService.MimeType.JSON);
+       }
      }
      
-     catch (e) {
-       return ContentService
-         .createTextOutput(JSON.stringify({ 'result': 'error', 'error': e }))
-         .setMimeType(ContentService.MimeType.JSON);
+     catch (error) {
+       // Return error as JSONP if callback is provided
+       if (e.parameter.callback) {
+         return ContentService
+           .createTextOutput(e.parameter.callback + '(' + JSON.stringify({ 'result': 'error', 'error': error.toString() }) + ')')
+           .setMimeType(ContentService.MimeType.JAVASCRIPT);
+       } else {
+         return ContentService
+           .createTextOutput(JSON.stringify({ 'result': 'error', 'error': error.toString() }))
+           .setMimeType(ContentService.MimeType.JSON);
+       }
      }
      
      finally {
@@ -104,15 +129,24 @@ To connect the email form to Google Sheets, follow these steps:
    - Replace `'YOUR_GOOGLE_SCRIPT_URL_HERE'` with the Web App URL you copied
    - Save the file and deploy your website
 
-5. **Test the Form**:
-   - When testing locally, the form will simulate success without actually submitting to Google Sheets
-   - Once deployed to GitHub Pages, visit your website and submit the form with a test email
-   - Check your Google Sheet to confirm the data was received correctly
+5. **Re-Deploy the Google Apps Script**:
+   - **IMPORTANT**: If you already deployed your Google Apps Script, you need to update it with the new code above and re-deploy it
+   - After pasting the new code, click "Deploy" > "New deployment" again
+   - Select "Web app" type, set Execute as "Me" and Who has access to "Anyone"
+   - This will generate a new URL, but you don't need to update it in your HTML if you're using the same script
 
-**Note**: 
-- Google Apps Script has quotas for daily executions. If you expect high traffic, consider using a more robust solution.
-- The form uses 'no-cors' mode to handle CORS issues, which means you won't get detailed error messages if the submission fails, but it helps work around cross-origin restrictions.
-- Local testing simulates success without actually submitting to Google Sheets to avoid CORS errors during development.
+6. **Test the Form**:
+   - Visit your live site at https://stanchak.github.io/RugThief/
+   - Submit the form with a test email
+   - Check your Google Sheet to confirm the data was received correctly
+   - The form should now work properly in production
+
+**How the New Solution Works**:
+- The new form submission uses JSONP (JSON with Padding) to overcome CORS restrictions
+- It sends data via a dynamically created script tag rather than using fetch()
+- The script includes a callback function that processes the response from Google
+- A fallback mechanism assumes success after 3 seconds if no response is received
+- The Google Apps Script now handles both GET and POST requests for better flexibility
 
 ## Credits
 
