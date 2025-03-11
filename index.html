@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>RugThief - Prices so good you think they're stolen!</title>
+    <title>RugThief - Prices so good you'd think they're stolen!</title>
     <meta name="description" content="RugThief offers the best deals on rugs anywhere. Our prices are so low they're almost criminal. Join our waitlist for exclusive first access to our store launch.">
     <meta name="keywords" content="rugs, rug deals, persian rugs, affordable rugs, discount rugs, floor coverings, cheap rugs, rug store">
     <meta name="author" content="RugThief.com">
@@ -26,7 +26,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rugthief.com/">
-    <meta property="og:title" content="RugThief - Prices so good you think they're stolen!">
+    <meta property="og:title" content="RugThief - Prices so good you'd think they're stolen!">
     <meta property="og:description" content="Get on the list for exclusive first access to the best rug deals anywhere. Our prices are so low they're almost criminal!">
     <meta property="og:image" content="https://rugthief.com/images/logo-transparent.png">
     <meta property="og:image:alt" content="RugThief Logo">
@@ -35,7 +35,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://rugthief.com/">
-    <meta name="twitter:title" content="RugThief - Prices so good you think they're stolen!">
+    <meta name="twitter:title" content="RugThief - Prices so good you'd think they're stolen!">
     <meta name="twitter:description" content="Get on the list for exclusive first access to the best rug deals anywhere. Our prices are so low they're almost criminal!">
     <meta name="twitter:image" content="https://rugthief.com/images/logo-transparent.png">
     <meta name="twitter:image:alt" content="RugThief Logo">
@@ -121,20 +121,17 @@
         .marquee {
             background-color: #222;
             padding: 12px;
-            margin: 0 -60px 20px -60px; /* Increased negative margin for more width */
             border: 3px solid #ff00ff;
-            overflow: hidden;
-            white-space: nowrap;
             border-radius: 6px;
-            width: calc(100% + 120px); /* Increased width by 25% approx */
-            box-sizing: border-box; /* Ensure padding is included in width */
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
         }
         
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 1440s linear infinite; /* Decreased by another 50% (from 720s to 1440s) */
+        .marquee-container {
             font-size: 1.4rem;
             font-weight: bold;
+            white-space: pre;
         }
         
         .email-form {
@@ -213,11 +210,6 @@
         
         /* Blink animation keyframes removed */
         
-        @keyframes marquee {
-            0% { transform: translateX(0%); } /* Start at 0% to make text visible immediately */
-            100% { transform: translateX(-800%); } /* Same end point for consistent scrolling */
-        }
-        
         /* Screen flicker effect removed */
         
         /* Old-school cursor */
@@ -292,14 +284,11 @@
             }
             
             .marquee {
-                margin: 0 -15px 20px -15px; /* Reduced negative margin for mobile */
-                width: calc(100% + 30px); /* Adjusted width for mobile */
                 padding: 8px;
             }
             
-            .marquee-content {
+            .marquee-container {
                 font-size: 1.2rem;
-                animation-duration: 60s;
             }
             
             body {
@@ -325,7 +314,7 @@
         </div>
         
         <div class="right-column">
-            <h1>Prices so good you think they're STOLEN</h1>
+            <h1>Prices so good you'd think they're STOLEN</h1>
             
             <div class="email-form">
                 <h2>GET ON THE LIST</h2>
@@ -339,8 +328,7 @@
             </div>
             
             <div class="marquee">
-                <div class="marquee-content">
-                    🔥 STORE LAUNCHING SOON 🔥 GET ON THE LIST FOR EXCLUSIVE FIRST ACCESS 🔥 THE BEST DEALS ON RUGS ANYWHERE 🔥 PRICES SO LOW THEY'RE CRIMINAL 🔥 OUR COMPETITORS ARE FILING POLICE REPORTS 🔥 PERSIAN RUGS WITHOUT THE PERSIAN PRICE TAG 🔥 WE'RE ROLLING OUT DEALS FASTER THAN YOU CAN ROLL UP A RUG 🔥 THE ONLY THING GETTING CLEANED OUT IS OUR INVENTORY 🔥 OUR BUSINESS MODEL? NOTHING SHADY, JUST INSANE DEALS 🔥 DON'T TELL THE AUTHORITIES WHERE YOU GOT THAT RUG 🔥 OUR SELECTION WILL FLOOR YOU 🔥 WE'LL SWEEP THE COMPETITION UNDER THE RUG 🔥 IF YOU FIND A BETTER PRICE, WE'LL BEAT IT (AND THEN TAKE THEIR INVENTORY TOO) 🔥 SHHHH... THE LESS QUESTIONS ASKED, THE BETTER 🔥 CARPETS SO NICE, YOU'LL WANT TO BE AN ACCOMPLICE 🔥 JOKE: WHY DON'T THIEVES STEAL RUGS? TOO MANY WITNESSES - THE FLOOR SAW EVERYTHING 🔥 JOKE: WHAT HAPPENS WHEN YOU'RE CAUGHT STEALING A RUG? YOU GET PILED WITH CHARGES 🔥 JOKE: HOW DOES A RUG THIEF ESCAPE? THEY MAKE A CLEAN SWEEP 🔥 JOKE: WHY ARE RUG THIEVES NEVER COLD? THEY'RE ALWAYS UNDERCOVER 🔥 JOKE: WHAT DO YOU CALL A RUG THAT'S BEEN STOLEN TWICE? RE-PURLOINED 🔥 MAKING RUG RETAILERS CRY SINCE 2025 🔥 WE'RE LIKE ROBIN HOOD BUT FOR RUGS 🔥 THESE DEALS ARE TOO GOOD TO BE LEGAL (BUT THEY TOTALLY ARE, WE SWEAR) 🔥 WE DIDN'T STEAL THESE RUGS, WE JUST NEGOTIATED WITH EXTREME PREJUDICE 🔥 LIKE YOUR RUGS WITH A SIDE OF PLAUSIBLE DENIABILITY? WE'VE GOT YOU COVERED 🔥 OUR SALES TEAM WEARS MASKS FOR YOUR PROTECTION 🔥 GETAWAY CAR NOT INCLUDED WITH PURCHASE 🔥 ALL SALES UNTRACEABLE...ER, WE MEAN FINAL 🔥
+                <div class="marquee-container">
                 </div>
             </div>
             
@@ -381,70 +369,9 @@
       }
     }
     </script>
-    <script>
-        document.getElementById('email-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            
-            // Get form data to send to Google Sheet
-            const formData = new FormData();
-            formData.append('email', email);
-            
-            // Google Apps Script Web App URL for form submission
-            const scriptURL = 'https://script.google.com/macros/s/AKfycby5tvO5a_TEQXHI5QFe9eWf_VZ-0nK17dKITj12yQx_DxViDZH82FVsGDNqyZFaBmH2Ag/exec';
-            
-            // Improved approach using JSON data for better compatibility
-            // Show processing message
-            document.getElementById('submission-message').innerHTML = 
-                '<p style="color: #ffcc00; margin-top: 15px;">💬 Processing your request...</p>';
-            
-            // Create JSON data instead of FormData
-            const jsonData = {
-                email: email
-            };
-            
-            // Create request options - using JSONP approach
-            const url = `${scriptURL}?email=${encodeURIComponent(email)}&callback=handleResponse`;
-            
-            // Create a script element to handle the JSONP request
-            const script = document.createElement('script');
-            script.src = url;
-            document.body.appendChild(script);
-            
-            // Define the callback function in the global scope
-            window.handleResponse = function(response) {
-                console.log('Response received:', response);
-                // Show success message
-                document.getElementById('submission-message').innerHTML = 
-                    '<p style="color: #00ff00; margin-top: 15px;">🎉 YOU\'RE ON THE LIST! 🎉<br>We\'ll notify you when we launch!</p>';
-                
-                // Clean up script tag
-                document.body.removeChild(script);
-                
-                // Clear the form
-                document.getElementById('email-form').reset();
-            };
-            
-            // Add error handling
-            script.onerror = function() {
-                console.error('Script loading error');
-                document.getElementById('submission-message').innerHTML = 
-                    '<p style="color: #ff0000; margin-top: 15px;">❌ Something went wrong! Please try again.</p>';
-                
-                // Clean up script tag
-                document.body.removeChild(script);
-            };
-            
-            // Fallback - assume success after 3 seconds if no response
-            setTimeout(function() {
-                if (document.getElementById('submission-message').innerHTML.includes('Processing')) {
-                    console.log('Fallback: Assuming success after timeout');
-                    document.getElementById('submission-message').innerHTML = 
-                        '<p style="color: #00ff00; margin-top: 15px;">🎉 YOU\'RE ON THE LIST! 🎉<br>We\'ll notify you when we launch!</p>';
-                    document.getElementById('email-form').reset();
-                }
-            }, 3000);
-        });
-    </script>
+    
+    <!-- Application Scripts -->
+    <script type="module" src="scripts/marquee.js"></script>
+    <script src="scripts/form.js"></script>
 </body>
 </html>
