@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Rolled Rug -->
+  <circle cx="50" cy="50" r="45" fill="#222" stroke="#000" stroke-width="2"/>
+  <ellipse cx="50" cy="20" rx="45" ry="15" fill="#333" stroke="#000" stroke-width="2"/>
+  <ellipse cx="50" cy="20" rx="35" ry="10" fill="#444" stroke="#000" stroke-width="1.5"/>
+  <ellipse cx="50" cy="20" rx="25" ry="7" fill="#555" stroke="#000" stroke-width="1"/>
+  <ellipse cx="50" cy="20" rx="15" ry="4" fill="#666" stroke="#000" stroke-width="0.5"/>
+  
+  <!-- Mask -->
+  <path d="M30,40 C25,45 25,55 30,60 L40,50 L30,40 Z" fill="#000"/>
+  <path d="M70,40 C75,45 75,55 70,60 L60,50 L70,40 Z" fill="#000"/>
+  <rect x="30" y="40" width="40" height="5" fill="#000"/>
+  
+  <!-- Fringes on bottom -->
+  <g stroke="#888" stroke-width="1.5">
+    <line x1="35" y1="80" x2="35" y2="90"/>
+    <line x1="40" y1="82" x2="40" y2="92"/>
+    <line x1="45" y1="83" x2="45" y2="93"/>
+    <line x1="50" y1="84" x2="50" y2="94"/>
+    <line x1="55" y1="83" x2="55" y2="93"/>
+    <line x1="60" y1="82" x2="60" y2="92"/>
+    <line x1="65" y1="80" x2="65" y2="90"/>
+  </g>
+</svg>
