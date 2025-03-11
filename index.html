@@ -34,9 +34,10 @@
             justify-content: center;
             align-items: center;
             box-sizing: border-box;
-            flex-wrap: wrap;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-            position: relative; /* Create stacking context for children */
+            flex-wrap: nowrap;
+            overflow-x: hidden;
+            position: relative;
+            gap: 60px;
         }
         
         .left-column {
@@ -44,7 +45,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0 20px;
+            padding: 0;
+            margin-bottom: 0;
+            margin-top: -60px;
         }
         
         .right-column {
@@ -54,7 +57,8 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 0;
+            margin-top: 0;
         }
         
         .logo {
@@ -63,11 +67,16 @@
         }
         
         h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             margin: 0 0 15px 0;
-            text-shadow: 3px 3px 0 #ff00ff, 6px 6px 0 #00ffff;
-            letter-spacing: 2px;
+            padding-top: 5px;
+            text-shadow: 2px 2px 0 #ff00ff, 3px 3px 0 #00ffff;
+            letter-spacing: 1px;
             line-height: 1;
+            font-weight: normal;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         h2 {
@@ -100,10 +109,10 @@
         
         .email-form {
             background-color: rgba(0, 0, 0, 0.7);
-            padding: 30px;
+            padding: 25px;
             border: 5px solid #00ffff;
             border-radius: 8px;
-            margin: 0 0 25px 0;
+            margin: 0 0 20px 0;
             box-shadow: 0 0 35px #ff00ff;
             width: 100%;
             box-sizing: border-box; /* Ensure padding is included in width */
@@ -111,7 +120,8 @@
         
         .email-form h2 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-size: 2.2rem;
         }
         
         .form-container {
@@ -192,21 +202,23 @@
             .container {
                 flex-direction: column;
                 padding: 15px;
-                overflow-x: hidden; /* Prevent horizontal scrolling */
+                overflow-x: hidden;
                 width: 100%;
                 max-width: 100%;
+                gap: 20px;
             }
             
             .left-column, .right-column {
                 width: 100%;
-                max-width: 100%; /* Ensure it doesn't overflow */
+                max-width: 100%;
                 padding: 0;
-                overflow-x: hidden; /* Prevent horizontal scrolling */
-                box-sizing: border-box; /* Ensure padding is included in width */
+                overflow-x: hidden;
+                box-sizing: border-box;
             }
             
             .left-column {
                 margin-bottom: 20px;
+                margin-top: 0;
             }
             
             .logo {
@@ -214,8 +226,12 @@
             }
             
             h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
                 word-wrap: break-word;
+                text-shadow: 1.5px 1.5px 0 #ff00ff, 2px 2px 0 #00ffff;
+                letter-spacing: 0.8px;
+                max-width: 100%;
+                line-height: 0.9;
             }
             
             h2 {
@@ -253,6 +269,7 @@
             
             .marquee-content {
                 font-size: 1.2rem;
+                animation-duration: 60s;
             }
             
             body {
