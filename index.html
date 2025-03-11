@@ -314,38 +314,57 @@
             // Google Apps Script Web App URL for form submission
             const scriptURL = 'https://script.google.com/macros/s/AKfycbypKd47Qu4mY_zT4FjhYBP6hJ-r9hYTwVnb0IwlW1GtLyOaFbInNmUTvX57xZPpfGZz5g/exec';
             
-            // For local testing - simulate success without actually submitting
-            const isLocalTest = window.location.protocol === 'file:';
+            // Improved approach using JSON data for better compatibility
+            // Show processing message
+            document.getElementById('submission-message').innerHTML = 
+                '<p style="color: #ffcc00; margin-top: 15px;">💬 Processing your request...</p>';
             
-            if (isLocalTest) {
-                console.log('Local testing mode - email:', email);
+            // Create JSON data instead of FormData
+            const jsonData = {
+                email: email
+            };
+            
+            // Create request options - using JSONP approach
+            const url = `${scriptURL}?email=${encodeURIComponent(email)}&callback=handleResponse`;
+            
+            // Create a script element to handle the JSONP request
+            const script = document.createElement('script');
+            script.src = url;
+            document.body.appendChild(script);
+            
+            // Define the callback function in the global scope
+            window.handleResponse = function(response) {
+                console.log('Response received:', response);
                 // Show success message
                 document.getElementById('submission-message').innerHTML = 
                     '<p style="color: #00ff00; margin-top: 15px;">🎉 YOU\'RE ON THE LIST! 🎉<br>We\'ll notify you when we launch!</p>';
                 
+                // Clean up script tag
+                document.body.removeChild(script);
+                
                 // Clear the form
-                this.reset();
-            } else {
-                // Submit the form data to Google Sheets
-                fetch(scriptURL, { 
-                    method: 'POST', 
-                    body: formData,
-                    mode: 'no-cors' // Add no-cors mode to handle CORS issues
-                })
-                .then(response => {
-                    // With no-cors, we can't access response.ok, so we assume success
+                document.getElementById('email-form').reset();
+            };
+            
+            // Add error handling
+            script.onerror = function() {
+                console.error('Script loading error');
+                document.getElementById('submission-message').innerHTML = 
+                    '<p style="color: #ff0000; margin-top: 15px;">❌ Something went wrong! Please try again.</p>';
+                
+                // Clean up script tag
+                document.body.removeChild(script);
+            };
+            
+            // Fallback - assume success after 3 seconds if no response
+            setTimeout(function() {
+                if (document.getElementById('submission-message').innerHTML.includes('Processing')) {
+                    console.log('Fallback: Assuming success after timeout');
                     document.getElementById('submission-message').innerHTML = 
                         '<p style="color: #00ff00; margin-top: 15px;">🎉 YOU\'RE ON THE LIST! 🎉<br>We\'ll notify you when we launch!</p>';
-                    
-                    // Clear the form
-                    this.reset();
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    document.getElementById('submission-message').innerHTML = 
-                        '<p style="color: #ff0000; margin-top: 15px;">❌ Something went wrong! Please try again.</p>';
-                });
-            }
+                    document.getElementById('email-form').reset();
+                }
+            }, 3000);
         });
     </script>
 </body>
