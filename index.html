@@ -228,6 +228,8 @@
                 width: 100%;
                 max-width: 100%;
                 gap: 20px;
+                min-height: unset;
+                justify-content: flex-start;
             }
             
             .left-column, .right-column {
@@ -239,8 +241,7 @@
             }
             
             .left-column {
-                margin-bottom: 20px;
-                margin-top: 0;
+                margin: 10px 0;
             }
             
             .logo {
@@ -254,6 +255,7 @@
                 letter-spacing: 0.8px;
                 max-width: 100%;
                 line-height: 0.9;
+                margin-top: 0;
             }
             
             h2 {
@@ -303,6 +305,41 @@
             * {
                 max-width: 100vw;
                 box-sizing: border-box;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 15px;
+                gap: 15px;
+            }
+
+            .logo {
+                width: 200px;
+                margin: 0 auto 15px;
+            }
+
+            .marquee {
+                margin: 10px 0;
+            }
+
+            .email-form {
+                margin: 10px 0;
+                padding: 20px;
+            }
+
+            .email-input {
+                padding: 8px;
+                margin-bottom: 10px;
+            }
+
+            .submit-button {
+                padding: 8px 15px;
+            }
+
+            footer {
+                margin-top: 15px;
+                font-size: 0.8em;
             }
         }
     </style>
