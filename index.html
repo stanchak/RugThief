@@ -119,19 +119,23 @@
         /* Blink animation removed */
         
         .marquee {
-            background-color: #222;
-            padding: 12px;
-            border: 3px solid #ff00ff;
-            border-radius: 6px;
-            overflow: hidden;
             width: 100%;
+            background: #000;
+            padding: 5px 0;
+            overflow: hidden;
+            white-space: nowrap;
             box-sizing: border-box;
         }
         
         .marquee-container {
-            font-size: 1.4rem;
-            font-weight: bold;
-            white-space: pre;
+            white-space: nowrap;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .marquee-container {
+                font-size: 1rem;
+            }
         }
         
         .email-form {
@@ -235,13 +239,13 @@
             .left-column, .right-column {
                 width: 100%;
                 max-width: 100%;
-                padding: 0;
                 overflow-x: hidden;
                 box-sizing: border-box;
             }
             
             .left-column {
-                margin: 10px 0;
+                margin: 0;
+                padding: 0;
             }
             
             .logo {
@@ -340,6 +344,10 @@
             footer {
                 margin-top: 15px;
                 font-size: 0.8em;
+            }
+
+            .marquee-container {
+                font-size: 1rem;
             }
         }
     </style>
